@@ -6,36 +6,55 @@ namespace Calculator
     class Program
     {
         static int number, firstNumber, secondNumber;
+        static bool loop = true;
         public static void MenuScreen()
         {
-            Console.WriteLine("Choose operation:");
-            Console.WriteLine("1 - addition");
-            Console.WriteLine("2 - subtraction");
-            Console.WriteLine("3 - division");
-            Console.WriteLine("4 - multiplication");
-            Console.WriteLine("5 - exponentiation");
-            Console.WriteLine("6 - modulo");
-            Console.WriteLine("7 - odd numbers");
-            Console.WriteLine("8 - primary numbers");
-            Console.WriteLine("9 - square root");
-            Console.WriteLine("10 - the natural logarithm");
-            Console.WriteLine("11 - Exit");
+            const string ChooseOperation = "Choose operation:";
+            const string Addition = "1 - addition";
+            const string Subtraction = "2 - subtraction";
+            const string Division = "3 - division";
+            const string Multiplication = "4 - multiplication";
+            const string Exponentiation = "5 - exponentiation";
+            const string Modulo = "6 - modulo";
+            const string OddNumbers = "7 - odd numbers";
+            const string PrimaryNumbers = "8 - primary numbers";
+            const string SquareRoot = "9 - square root";
+            const string NaturalLogarithm = "10 - the natural logarithm";
+            const string Exit = "11 - Exit";
+
+            Console.WriteLine(ChooseOperation);
+            Console.WriteLine(Addition);
+            Console.WriteLine(Subtraction);
+            Console.WriteLine(Division);
+            Console.WriteLine(Multiplication);
+            Console.WriteLine(Exponentiation);
+            Console.WriteLine(Modulo);
+            Console.WriteLine(OddNumbers);
+            Console.WriteLine(PrimaryNumbers);
+            Console.WriteLine(SquareRoot);
+            Console.WriteLine(NaturalLogarithm);
+            Console.WriteLine(Exit);
         }
 
-        static void enterTwoNumbers()
+        static void EnterTwoNumbers()
         {
-            Console.WriteLine("Enter the first number");
+            const string enterFirstNumber = "Enter the first number";
+            const string enterSecondNumber = "Enter the second number";
+
+            Console.WriteLine(enterFirstNumber);
             firstNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the second number");
+            Console.WriteLine(enterSecondNumber);
             secondNumber = Convert.ToInt32(Console.ReadLine());
         }
-        static void enterOneNumber()
+        static void EnterOneNumber()
         {
-            Console.WriteLine("Enter the number");
+            const string enterNumber = "Enter the number";
+
+            Console.WriteLine(enterNumber);
             number = Convert.ToInt32(Console.ReadLine());
         }
 
-        static void primaryNumbers()
+        static void PrimaryNumbers()
         {
             for (int i = 3; i <= number; i += 2)
             {
@@ -56,86 +75,97 @@ namespace Calculator
 
         static void Main(string[] args)
         {
-            int operation;
 
-            while (true)
+            while (loop)
             {
                 Console.Clear();
                 MenuScreen();
-                operation = Convert.ToInt32(Console.ReadLine());
-                if(operation == 1)                                  //addition
+                switch(Convert.ToInt32(Console.ReadLine()))
                 {
-                    enterTwoNumbers();
-                    Console.WriteLine(firstNumber+secondNumber);
-                    Console.ReadKey();
-                }
-                else if(operation == 2)                             //subtraction
-                {
-                    enterTwoNumbers();
-                    Console.WriteLine(firstNumber - secondNumber);
-                    Console.ReadKey();
-                }
-                else if(operation == 3)                             //division
-                {
-                    enterTwoNumbers();
-                    Console.WriteLine(firstNumber / secondNumber);
-                    Console.ReadKey();
-                }
-                else if (operation == 4)                            //multiplication
-                {
-                    enterTwoNumbers();
-                    Console.WriteLine(firstNumber * secondNumber);
-                    Console.ReadKey();
-                }
-                else if (operation == 5)                            //exponentiation
-                {
-                    enterTwoNumbers();
-                    Console.WriteLine(Pow(firstNumber, secondNumber));
-                    Console.ReadKey();
-                }
-                else if (operation == 6)                            //modulo
-                {
-                    enterTwoNumbers();
-                    Console.WriteLine(firstNumber % secondNumber);
-                    Console.ReadKey();
-                }
-                else if (operation == 7)                            //odd numbers
-                {
-                    enterOneNumber();
-                    for (int i = 1; i <= number; i+=2 )
-                    {
-                        Console.WriteLine(i);
-                    }
-                    Console.ReadKey();
-                }
-                else if (operation == 8)                            //primary numbers
-                {
-                    enterOneNumber();
-                    primaryNumbers();
-                    Console.ReadKey();
-                }
-                else if (operation == 9)                            //square root
-                {
-                    enterOneNumber();
-                    Console.WriteLine(Sqrt(number));
-                    Console.ReadKey();
-                }
-                else if (operation == 10)                           //the natural logarithm
-                {
-                    enterOneNumber();
-                    Console.WriteLine(Log(number));
-                    Console.ReadKey();
-                }
-                else if (operation == 11)                           //Exit
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Wrong operation");
-                    Console.ReadKey();
-                }
+                    case 1:                                 //addition
+                    
+                        EnterTwoNumbers();
+                        Console.WriteLine(firstNumber+secondNumber);
+                        Console.ReadKey();
+                        break;
 
+                    case 2:                             //subtraction
+                    
+                        EnterTwoNumbers();
+                        Console.WriteLine(firstNumber - secondNumber);
+                        Console.ReadKey();
+                        break;
+
+                    case 3:                             //division
+                    
+                        EnterTwoNumbers();
+                        Console.WriteLine(firstNumber / secondNumber);
+                        Console.ReadKey();
+                        break;
+
+                    case 4:                            //multiplication
+                    
+                        EnterTwoNumbers();
+                        Console.WriteLine(firstNumber * secondNumber);
+                        Console.ReadKey();
+                        break;
+
+                    case 5:                            //exponentiation
+                    
+                        EnterTwoNumbers();
+                        Console.WriteLine(Pow(firstNumber, secondNumber));
+                        Console.ReadKey();
+                        break;
+
+                    case 6:                            //modulo
+                    
+                        EnterTwoNumbers();
+                        Console.WriteLine(firstNumber % secondNumber);
+                        Console.ReadKey();
+                        break;
+
+                    case 7:                            //odd numbers
+                    
+                        EnterOneNumber();
+                        for (int i = 1; i <= number; i+=2 )
+                        {
+                            Console.WriteLine(i);
+                        }
+                        Console.ReadKey();
+                        break;
+
+                    case 8:                            //primary numbers
+                    
+                        EnterOneNumber();
+                        PrimaryNumbers();
+                        Console.ReadKey();
+                        break;
+
+                    case 9:                            //square root
+                    
+                        EnterOneNumber();
+                        Console.WriteLine(Sqrt(number));
+                        Console.ReadKey();
+                        break;
+
+                    case 10:                           //the natural logarithm
+                    
+                        EnterOneNumber();
+                        Console.WriteLine(Log(number));
+                        Console.ReadKey();
+                        break;
+
+                    case 11:                           //Exit
+
+                        loop = false;
+                        break;
+
+                    default:
+                    
+                        Console.WriteLine("Wrong operation");
+                        Console.ReadKey();                        
+                        break;
+                }
             }
         }
     }
